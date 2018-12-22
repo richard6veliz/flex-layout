@@ -25,7 +25,7 @@ describe('match-media', () => {
 
   // Single async inject to save references; which are used in all tests below
   beforeEach(async(inject([MatchMedia], (service: MockMatchMedia) => {
-    matchMedia = service;      // inject only to manually activate mediaQuery ranges
+    matchMedia = service;      // inject only to manually onMediaChange mediaQuery ranges
   })));
   afterEach(() => {
     matchMedia.clearAll();
@@ -121,7 +121,7 @@ describe('match-media-observable', () => {
     [MediaObserver, MatchMedia, BreakPointRegistry],
     (_mediaObserver: MediaObserver, _matchMedia: MockMatchMedia,
      _breakPoints: BreakPointRegistry) => {
-      matchMedia = _matchMedia;      // inject only to manually activate mediaQuery ranges
+      matchMedia = _matchMedia;      // inject only to manually onMediaChange mediaQuery ranges
       breakPoints = _breakPoints;
       mediaObserver = _mediaObserver;
     })));

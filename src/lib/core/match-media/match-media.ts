@@ -65,8 +65,9 @@ export class MatchMedia {
         const matches: Array<MediaChange> = this.registerQuery(mqList);
         if (matches.length) {
           const lastChange = matches.pop()!;
-
-          matches.forEach(observer.next);
+          matches.forEach((e: MediaChange) => {
+            observer.next(e);
+          });
           this._source.next(lastChange); // last match is cached
         }
         observer.complete();
